@@ -4,6 +4,12 @@
 
 Too Too Many Markers! "marker cluster" can't draw 100000 points, so I write "number cluster", it draws numbers not points.
 
+在线演示本项目（国内，高德和腾讯）：[http://jsfiddle.net/sinkcup/Z6v9x/](http://jsfiddle.net/sinkcup/Z6v9x/)
+
+在线演示本项目（国外，Google）：[http://jsfiddle.net/sinkcup/Y5NaT/](http://jsfiddle.net/sinkcup/Y5NaT/)
+
+如何集成到自己的项目：请看examples目录。
+
 ##麻点图/点聚合（无法满足10万个点的需求）：
 
 ###高德地图：
