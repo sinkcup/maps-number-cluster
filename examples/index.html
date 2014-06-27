@@ -13,6 +13,11 @@
         <script src="http://map.qq.com/api/js?v=2.exp"></script>
         <script src="../src/adapters/qq.js"></script>
 
+        <!--谷歌地图-->
+        <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyA886cdgLhXBlny3cMba1l_GXpMTB2w5sg&sensor=false"></script>
+        <script src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.13/src/infobox.js"></script>
+        <script src="../src/adapters/google.js"></script>
+
     </head>
     <body>
         <!--地图容器-->
@@ -71,9 +76,12 @@
                 "qq" : "腾讯",
                 "google" : "谷歌"
             },
-            "showAdaptersSwitch" : true,
-            "switchId" : "mapsAdaptersSwitch",
-            "defaultAdapter" : "amap"
+            "adaptersSwitch" : {
+                "show" : true,
+                "changeHash" : false,
+                "id" : "mapsAdaptersSwitch"
+            },
+            "defaultAdapter" : "qq"
         });
         numberCluster.addNumbers(numbers);
         </script>
