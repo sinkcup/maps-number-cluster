@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>number cluster demo</title>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="http://webapi.amap.com/maps?v=1.2&key=c1bd24ebbba2cdd8d6e0f129c71e8d76"></script>
+        <script src="../src/number_cluster.js"></script>
+        <script src="../src/adapters/amap.js"></script>
+    </head>
+    <body>
+        <!--地图容器-->
+        <div style="width:100%;height:640px;border:#ccc solid 1px;" id="maps"></div>
+        <script>
+        var numbers = [
+            {
+                "lng" : 121.44,
+                "lat" : 31.32,
+                "number" : 5
+            },
+            {
+                "lng" : 121.44,
+                "lat" : 31.35,
+                "number" : 1
+            },
+//121.47,31.20: 19
+            {
+                "lng" : 121.47,
+                "lat" : 31.20,
+                "number" : 19
+            },
+//121.47,31.23: 4848
+            {
+                "lng" : 121.47,
+                "lat" : 31.23,
+                "number" : 4848
+            },
+//121.47,31.26: 21
+            {
+                "lng" : 121.47,
+                "lat" : 31.26,
+                "number" : 21
+            },
+/*121.47,31.29: 7
+121.47,31.32: 3
+121.50,31.11: 3
+121.50,31.14: 12
+121.50,31.17: 6
+121.50,31.20: 10
+121.50,31.23: 385*/
+            {
+                "lng" : 121.50,
+                "lat" : 31.23,
+                "number" : 385
+            }
+        ];
+        var numberCluster = new maps.NumberCluster({
+            "center" : {
+                "lng" : 121.47,
+                "lat" : 31.23
+            },
+            "containerId" : "maps",
+            "adapters" : {
+                "amap" : "高德",
+                "qq" : "腾讯",
+                "google" : "谷歌"
+            },
+            "showAdaptersSwitch" : true,
+            "defaultAdapter" : "amap"
+        });
+        numberCluster.addNumbers(numbers);
+        </script>
+    </body>
+</html>
