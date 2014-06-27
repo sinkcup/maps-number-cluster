@@ -22,8 +22,7 @@ maps.NumberCluster = function(input) {
             adaptersSwitch += 'text-decoration: none; display: inline-block; color: #fff; background: ' + background + '; padding: 0.5em 1em; border: 1px solid #ebebeb" data-adapter="' + i + '" href="#' + i + '">' + input.adapters[i] + '</a></li>';
         }
         adaptersSwitch += '</ul>';
-        $('#' + input.containerId).append(adaptersSwitch);console.log(1);
-        console.log(input.adaptersSwitch.id);
+        $('#' + input.containerId).append(adaptersSwitch);
         $('#' + input.adaptersSwitch.id).find('a').click(function() {
             var adapter = $(this).data('adapter');
             self.changeAdapter(adapter);
@@ -48,7 +47,7 @@ maps.NumberCluster.prototype.addNumbers = function(numbers) {
 }
 
 maps.NumberCluster.prototype.changeAdapter = function(adapter) {
-    var self = this;console.log(adapter);
+    var self = this;
     var mapId = self.input.containerId + '_' + adapter;
     if ($('#' + mapId).length == 0) {
         $('div.maps_container').each(function() {
