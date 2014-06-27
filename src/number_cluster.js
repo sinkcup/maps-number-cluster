@@ -5,23 +5,39 @@ maps.NumberCluster = function(input) {
     this.input = input;
     this.adapterObj = {};
     this.numbers = {};
+    this.adapter = input.defaultAdapter;
     var self = this;
-    if (input.showAdaptersSwitch === true) {
-        var adaptersSwitch = '<ul id="' + input.switchId + '" style="z-index:2; position:absolute; left:40%; list-style:none; margin:0; padding:0;">';
+    if (input.adaptersSwitch.show === true) {
+        this.backgrounds = {
+            "normal" : '#444',
+            "visiting": "#3d9400"
+        }
+        var adaptersSwitch = '<ul id="' + input.adaptersSwitch.id + '" style="z-index:2; position:absolute; left:40%; list-style:none; margin:0; padding:0;">';
         for (var i in input.adapters) {
-            adaptersSwitch += '<li style="display:inline;"><a style="text-decoration: none; display:inline-block; background: #ccc; padding: 0.5em 1em;" data-adapter="' + i + '" href="#' + i + '">' + input.adapters[i] + '</a></li>';
+            adaptersSwitch += '<li style="display:inline;"><a style="';
+            var background = self.backgrounds.normal;
+            if (i == this.adapter) {
+                background = self.backgrounds.visiting;
+            }
+            adaptersSwitch += 'text-decoration: none; display: inline-block; color: #fff; background: ' + background + '; padding: 0.5em 1em; border: 1px solid #ebebeb" data-adapter="' + i + '" href="#' + i + '">' + input.adapters[i] + '</a></li>';
         }
         adaptersSwitch += '</ul>';
-        $('#' + input.containerId).append(adaptersSwitch);
-        $('#' + input.switchId).find('a').click(function() {
+        $('#' + input.containerId).append(adaptersSwitch);console.log(1);
+        console.log(input.adaptersSwitch.id);
+        $('#' + input.adaptersSwitch.id).find('a').click(function() {
             var adapter = $(this).data('adapter');
             self.changeAdapter(adapter);
             if (typeof self.numbers != {}) {
                 self.addNumbers(self.numbers);
             }
+            $('#' + input.adaptersSwitch.id).find('a').css({"background": self.backgrounds.normal});
+            $(this).css({"background": self.backgrounds.visiting});
+            if (input.adaptersSwitch.changeHash === false) {
+                return false;
+            }
+            //window.location.hash = '#' + adapter;
         });
     }
-    this.adapter = input.defaultAdapter;
     self.changeAdapter(input.defaultAdapter);
 }
 
