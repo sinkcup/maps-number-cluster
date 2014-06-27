@@ -6,17 +6,22 @@ maps.NumberCluster.adapters.amap = function(input) {
     zoomLevel = 11;
     var point = new AMap.LngLat(input.center.lng, input.center.lat); //定义一个点坐标
 
-    this.mapObj = new AMap.Map(input.containerId, {
-        center:point, //地图中心点  
+    this.mapObj = new AMap.Map(input.containerId + '_amap', {
+        center: point, //地图中心点  
         level: zoomLevel  //地图显示的比例尺级别  
     });
 
     this.mapObj.plugin(["AMap.ToolBar"],function() {
         //加载工具条
-        var tool = new AMap.ToolBar({
-            offset : new AMap.Pixel(10, 50)
-        });
+        var tool = new AMap.ToolBar();
         self.mapObj.addControl(tool);
+    });
+    this.mapObj.plugin(["AMap.MapType"], function(){
+        //地图类型切换
+        var type= new AMap.MapType({
+            defaultType:0 //使用2D地图
+        });
+        self.mapObj.addControl(type);
     });
 }
 
